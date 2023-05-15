@@ -49,12 +49,31 @@ body {
 	padding: 20px;
 	border-radius: 10px;
 	margin-bottom: 20px;
-	
+	cursor: move;
 }
 
 
+@media (max-width:600px) {
+	.lista .persona{
+		grid-template-columns: auto 1fr;
+	}
+}
+
 
 /* ? Clases para los estilos en los diferentes estados del drag and drop */
+
+.lista .persona.seleccionado{
+	transform: scale(1.02) rotate(-1deg);
+	box-shadow: 0px 0px 20px rgba(149, 153, 159, .16);
+}
+
+.lista .persona.fantasma{
+	border: 2px dotted #333;
+}
+
+.lista .persona.drag{
+	opacity: 0;
+}
 
 /* ? ------- */
 
@@ -69,7 +88,7 @@ body {
 
 .lista .dato {
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 1rem;
 }
 
 .lista .persona img {

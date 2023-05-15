@@ -5,4 +5,23 @@ Sortable.create(lista,{
       chosenClass:"seleccionado",
       //ghostClass:"fantasma",
       dragClass:"drag",
+
+      onEnd: () => {
+            console.log("se inserto un elemento");
+      },
+      group: "lista-personas",
+      store: {
+            // Guardamos el orden de la lista
+            set: (sortable) =>{
+                  const orden = sortable.toArray();
+                  localStorage.setItem(sortable.options.group.name, orden.join('|'));
+            },
+
+            //obtenemos el orden de la lista
+            get:(sortable) => {
+                  const orden = localStorage.getItem(sortable.options.group.name);
+                  return orden ? orden.split('|') : [];
+            }
+
+      }
 });
